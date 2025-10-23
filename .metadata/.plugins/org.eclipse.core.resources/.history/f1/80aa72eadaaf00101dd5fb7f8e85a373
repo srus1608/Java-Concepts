@@ -1,0 +1,65 @@
+package com.cisco;
+
+interface Vehicle{
+	void milage();
+	void wheels();
+}
+
+class Car implements Vehicle{
+	@override
+	public void wheels() {
+		System.out.println("4 wheeler");
+	}
+}
+class Nexon implements Car{
+	public void milage() {
+		System.out.println("Nexon milage is 18kmpl------------");
+		
+	}
+}
+
+class Brezza extends Car{
+	public void milage() {
+		System.out.println("-------Breeza milage is 20kmpl-------------");
+
+	}
+}
+
+// activity - create bike that implements Vehicle and create 2 subclasses of bike and pass their objects to print() method
+
+i
+
+class Bike implements Vehicle{
+	@override
+	public void wheels() {
+		System.out.println("2 wheeler");
+	}
+}
+
+class Honda extends Bike{
+	
+}
+
+
+class Bullet implements Bike{
+	
+}
+
+public class TestAbstraction {
+	public static void print(Vehicle v) {
+		v.milage();
+		v.wheels();
+		System.out.println("--------------------");
+	}
+	public static void main(String[] args) {
+		Nexon nexon = new Nexon();
+		Breeza breeza = new Breeza();
+		print(nexon);
+		print(breeza);
+		Honda honda = new Honda();
+		Bullet bullet = new Bullet();
+		print(honda);
+		print(bullet);
+	}
+
+}

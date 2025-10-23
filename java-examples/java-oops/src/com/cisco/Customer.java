@@ -1,0 +1,25 @@
+package com.cisco;
+
+
+public class Customer extends Person { // Customer inherits from Person
+    private String customerId;
+
+    public Customer(String id, String name, int age, String customerId) {
+        super(id, name, age); // Call the constructor of the parent class (Person)
+        this.customerId = customerId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+//
+//    @Override
+//    public void displayInfo() {
+//        super.displayInfo();
+//        System.out.println("Customer ID: " + customerId);
+//    }
+}

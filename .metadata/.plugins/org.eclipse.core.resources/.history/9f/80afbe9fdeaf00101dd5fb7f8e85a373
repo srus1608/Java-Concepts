@@ -1,0 +1,58 @@
+package com.cisco;
+
+public class Person {
+	private String name;
+	private long phone;
+	
+	public Person(String name, long phone) {
+		super(); // it is always written in the very first line of every constructor
+		this.name = name;
+		this.phone = phone;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public long getPhone() {
+		return phone;
+	}
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+}
+
+
+public class Person extends BaseObject { // Person inherits from BaseObject
+    private String name;
+    private int age;
+
+    public Person(String id, String name, int age) {
+        super(id); // Call the constructor of the parent class (BaseObject)
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override // Good practice to indicate overriding a method from a superclass
+    public void displayInfo() {
+        super.displayInfo(); // Call parent's displayInfo
+        System.out.println("Person Name: " + name + ", Age: " + age);
+    }
+}

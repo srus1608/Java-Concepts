@@ -22,4 +22,8 @@ public class Employee extends Person {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	public void displayInfo() {
+        super.displayInfo(); // Call parent's displayInfo
+        System.out.println("Employee ID: " + id + ", Salary: $" + salary);
+    }
 }

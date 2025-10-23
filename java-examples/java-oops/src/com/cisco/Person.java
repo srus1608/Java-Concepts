@@ -21,4 +21,8 @@ public class Person {
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
+	 public void displayInfo() {
+	        System.out.println("Person Name: " + name + ", Phone: " + phone);
+	    }
 }
+
