@@ -17,17 +17,17 @@ public class profile_enter_data {
                  "root",                                            
                  "Welcome123"                                       
              );
-             // Prepare the SQL INSERT statement here, 
+             
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO profile1 (name, dob) VALUES (?, ?)")
         ) {
 
             System.out.println("--- Insert New Profile ---");
 
-            // 1. Get User Input for Name
+            
             System.out.print("Enter Name: ");
             String name = scanner.nextLine();
 
-            // 2. Get User Input for Date of Birth (with validation)
+            
             LocalDate dobLocalDate = null;
             boolean validDobInput = false;
             while (!validDobInput) {
@@ -45,8 +45,8 @@ public class profile_enter_data {
             java.sql.Date dobSqlDate = java.sql.Date.valueOf(dobLocalDate);
 
             // 3. Set the parameters for the PreparedStatement
-            preparedStatement.setString(1, name);     // Set the FIRST '?' to the name
-            preparedStatement.setDate(2, dobSqlDate); // Set the SECOND '?' to the DOB
+            preparedStatement.setString(1, name);     
+            preparedStatement.setDate(2, dobSqlDate); 
 
             // 4. Execute the update
             int rowsAffected = preparedStatement.executeUpdate();
