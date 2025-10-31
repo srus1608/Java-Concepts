@@ -7,6 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+
+import com.cisco.beans.Profile;
+import com.cisco.dao.ProfileDao;
 
 /**
  * Servlet implementation class HelloServlet
@@ -27,11 +31,11 @@ public class HelloServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Hello Servlet is called");
 		PrintWriter writer = response.getWriter();
 		String username = "Alex";
-		writer.print("<h2> Hello "+ username+ "</h2>");
+		writer.print("<html><body>");
+		writer.print("<h2>Hello "+username+"</h2>");
+		writer.print("</body></html>");
 		
 	}
 
@@ -39,15 +43,19 @@ public class HelloServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		PrintWriter writer=response.getWriter();
-		String id=request.getParameter("id");
-		String name=request.getParameter("username");
-		String dob=request.getParameter("dob");
-		writer.print("ID "+id);
-		writer.print(" Name "+name);
-		writer.print(" DOB "+dob);
-		doGet(request, response);
+		ProfileDao dao = new ProfileDao();
+		PrintWriter out = response.getWriter();
+		// read the input parameters name and dob
+		// String name = request.getParameter("name");
+		//LocalDate dob = LocalDate.parse(request.getParameter("dob"));
+		Profile profile = new Profile();
+		profile.setName(request.getParameter("name")); // profile.setName(request.getParameter("name"))
+		profile.setDob(LocalDate.parse(request.getParameter("dob")));
+		Profile createdProfile = dao.save(profile);
+		out.print("<html><body>");
+		out.print("<h2>Profile created with an id = "+createdProfile.getId()+"</h2>");
+		out.print("<h3>"+createdProfile+"</h3>");
+		out.print("</body></html>");
 	}
 
 }
